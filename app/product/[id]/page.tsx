@@ -1,87 +1,42 @@
-/* eslint-disable */
-'use client'
-import Image from 'next/image';
-import { SetStateAction, useState } from 'react';
-
 import { products, notes } from '@/app/components/getProducts';
+import ImageHandler from './components/imageHandler';
+import QuantityHandler from './components/quantityHandler';
+import BuyBtnHandler from './components/buyBtnHandler';
 
 
-
-export async function generateStaticParams({ params }: { params: { id: string } }) {
-  const product = products.find((product) => product.name === params.id.replaceAll('%20', ' '));
-  return {
-    props: {
-      product,
+export async function generateStaticParams() {
+  return products.map((product) => ({
+    params: {
+      id: product.name.replaceAll(' ', '%20'),
     },
-  };
+  }))
 }
 
 
+
 function ProductPage ({params} : {params: {id: string}}) {
-    const [selectedImage, setSelectedImage] = useState<number>(0);
-    const [quantity, setQuantity] = useState(1);
 
 
     const product = products.find((product) => product.name === params.id.replaceAll('%20', ' '));
     // Mock product data (replace with your actual product data)
 
-    const handleImageClick = (index : number) => {
-        setSelectedImage(index);
-      };
-    
-    const handleContactClick = () => {
-        const message = `I'm interested in the product: ${product?.name} - Price: ₹${product?.price.toFixed(
-            2
-        )}, Quantity: ${quantity}`;
-        const whatsappUrl = `https://wa.me/+917666920328?text=${encodeURIComponent(message)}`;
-        window.location.href = whatsappUrl;
-    };
+  
 
     return (
+      <div>
         <div className="min-w-min min-h-screen bg-white mx-auto py-8 px-4">
         <div className='lg:w-7/12 lg:mx-auto'>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 ">
-          <div className="mb-8">
-            <Image
-              src={product?.image[selectedImage] as string}
-              alt={product?.name as string}
-              height={1000}
-              width={1000}
-              priority = {true}
-            />
-            <div className="flex flex-wrap justify-start gap-2 mt-4">
-              {product?.image.map((image, index) => (
-                <Image
-                  key={index}
-                  width={100}
-                  height={100}
-                  className={`w-full h-auto cursor-pointer border ${
-                    index === selectedImage ? 'border-blue-500' : 'border-gray-300'
-                  }`}
-                  src={image}
-                  alt={`Product ${index + 1}`}
-                  style={{width: '100px',height: '100px'}}
-                  onClick={() => handleImageClick(index)}
-                />
-              )) as JSX.Element[]}
-            </div>
-          </div>
+   
+        <ImageHandler product={product as unknown as productType} />
+
           <div>
             <h1 className="text-3xl font-bold mb-4 text-gray-900">{product?.name}</h1>
             <p className="text-xl text-gray-800 mb-4">₹{product?.price.toFixed(2)}</p>
             <p className="text-lg text-gray-800 mb-4">{product?.meta}</p>
-            <div className="flex items-center mb-4">
-              <label htmlFor="quantity" className="mr-2 text-lg text-gray-800">
-                Quantity:
-              </label>
-              <input
-                type="number"
-                id="quantity"
-                className="w-16 py-1 px-2 border border-gray-300 rounded text-gray-900"
-                value={quantity}
-                onChange={(e) => setQuantity(!(quantity < 1) ? Number.parseInt(e.target.value ) : 1)}
-              />
-            </div>
+
+            <QuantityHandler/>
+
             <div className='grid grid-flow-row text-gray-800'>
               <p className='text-lg text-gray-800 mb-1'>
                   Delivery:
@@ -90,12 +45,8 @@ function ProductPage ({params} : {params: {id: string}}) {
                 Free shipping within Maharashtra. ₹300 extra shipping charges for other states in India.
               </p>
             </div>
-            <button
-              className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded"
-              onClick={handleContactClick}
-            >
-              Contact regarding this product
-            </button>
+          
+          <BuyBtnHandler product={product as unknown as productType} />
 
           </div>
         </div>
@@ -180,8 +131,10 @@ function ProductPage ({params} : {params: {id: string}}) {
             </div>
         </div>
         </div>
+      </div>
       </div> 
     );
 };
 
 export default ProductPage;
+
