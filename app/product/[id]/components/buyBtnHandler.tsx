@@ -1,7 +1,22 @@
 'use client'
 import React from 'react'
 
-type Props = {}
+type description = {
+    About: string,
+    customerRequirements : string[]
+}
+
+type productType = {
+    name: string,
+    price: number,
+    image: string[],
+    meta: string,
+    light:string[],
+    Size: string[],
+    description: description,
+  }
+
+
 
 export default function buyBtnHandler({product}: {product : productType}) {
 
