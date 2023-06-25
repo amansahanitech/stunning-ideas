@@ -17,8 +17,8 @@ import { products } from "./getProducts";
                 className="w-full h-48 object-cover mb-4 hover:opacity-70"
                 src={product.image[0]}
                 alt={product.name}
-                width={500}
-                height={500}
+                width={100}
+                height={100}
               />
             </Link>
             <Link href={`/product/${product.name}`}>
