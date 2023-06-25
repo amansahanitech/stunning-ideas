@@ -11,7 +11,7 @@ const Header = () => {
     return (
       <div>
           <div className="bg-black flex items-center mx-auto px-6 h-20 flex-row sm:hidden justify-between">
-          <Link href={'/'} className='hover:text-blue-600'>THE STUNNING IDEAS</Link>
+          <Link href={'/'} className='hover:text-blue-600 text-xl'>THE STUNNING IDEAS</Link>
           {
               !menu ? <IoMenu className='text-xl hover:opacity-60 hover:text-blue-600' onClick={() => setMenu(true) } /> :
               <AiOutlineClose className='text-xl hover:opacity-60 hover:text-blue-600' onClick={() => setMenu(false) } />
@@ -31,19 +31,19 @@ const Header = () => {
         <Link 
         href="/" 
         onClick={() => setMenu(false)} 
-        className=" font-medium hover:opacity-70 border-t border-t-white w-screen border-spacing-1 border-opacity-50">
+        className=" hover:opacity-70 border-t border-t-white w-screen border-spacing-1 border-opacity-50">
           <p className='ml-6 my-2'>Home</p>
         </Link>
         <Link 
         href="/about"
         onClick={() => setMenu(false)}   
-        className="font-medium hover:opacity-70 border-t border-t-white w-screen border-spacing-1 border-opacity-50">
+        className=" hover:opacity-70 border-t border-t-white w-screen border-spacing-1 border-opacity-50">
             <p className='ml-6 my-2'>About</p>
         </Link>
         <Link 
         href="/contact"
         onClick={() => setMenu(false)}   
-        className="font-medium hover:opacity-70 border-y border-y-white w-screen mb-0.5 border-opacity-50">
+        className=" hover:opacity-70 border-y border-y-white w-screen mb-0.5 border-opacity-50">
           <p className='ml-6 my-2'>Contact</p>
         </Link>
       </nav>
