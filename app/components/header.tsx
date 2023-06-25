@@ -27,7 +27,7 @@ const Header = () => {
   const Nav = () => {
     return (
       <div className='w-screen bg-black text-white flex flex-col justify-center items-center absolute z-50 sm:hidden'>
-      <nav className="flex flex-col items-center text-xl justify-center">
+      <nav className="flex flex-col items-center text-sm justify-center">
         <Link 
         href="/" 
         onClick={() => setMenu(false)} 
@@ -55,7 +55,7 @@ const Header = () => {
     <header className="bg-black text-white">
       <div className=" mx-auto py-4 px-6 sm:flex hidden justify-between items-center h-20">
         <div className="flex items-center">
-          <Link href="/" className='text-md font-medium'>
+          <Link href="/" className='font-medium'>
             THE STUNNING IDEAS
           </Link>
         </div>
