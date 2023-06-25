@@ -8,8 +8,8 @@ const Banner = () => {
           className="w-full h-fit z-0"
           src={bgImage}
           priority={true}
-          width={1000}
-          height={1000}
+          width={700}
+          height={700}
           alt="Almond Blossoms Painting"
         />
        {/**
