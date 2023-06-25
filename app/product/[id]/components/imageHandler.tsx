@@ -17,8 +17,8 @@ function ImageHandler({product}: {product : productType} ) {
     <Image
       src={product?.image[selectedImage] as string}
       alt={product?.name as string}
-      height={1000}
-      width={1000}
+      height={600}
+      width={600}
       priority = {true}
     />
     <div className="flex flex-wrap justify-start gap-2 mt-4">
