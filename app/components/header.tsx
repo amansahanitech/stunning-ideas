@@ -11,7 +11,7 @@ const Header = () => {
     return (
       <div>
           <div className="bg-black flex items-center mx-auto px-6 h-20 flex-row sm:hidden justify-between">
-          <Link href={'/'} className='hover:text-blue-600 text-lg'>THE STUNNING IDEAS</Link>
+          <Link href={'/'} className='hover:text-blue-600 text-base'>THE STUNNING IDEAS</Link>
           {
               !menu ? <IoMenu className='text-xl hover:opacity-60 hover:text-blue-600' onClick={() => setMenu(true) } /> :
               <AiOutlineClose className='text-xl hover:opacity-60 hover:text-blue-600' onClick={() => setMenu(false) } />
